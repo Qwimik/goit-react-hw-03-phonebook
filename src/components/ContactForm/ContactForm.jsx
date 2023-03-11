@@ -4,6 +4,12 @@ import { nanoid } from 'nanoid';
 import { FormInputName } from 'components/FormInputName/FormInputName';
 import { FormInputNumber } from 'components/FormInputNumber/FormInputNumber';
 
+import {
+  FormLabel,
+  LabelSpan,
+  BtnSubmit,
+} from 'components/ContactForm/ContactForm.styled';
+
 const initialValues = {
   name: '',
   number: '',
@@ -19,16 +25,16 @@ export const ContactForm = ({ addContact }) => {
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form>
-        <label htmlFor="name">
-          <p>Name</p>
+        <FormLabel htmlFor="name">
+          <LabelSpan>Name</LabelSpan>
           <FormInputName />
-        </label>
-        <label htmlFor="number">
-          <p>Number</p>
+        </FormLabel>
+        <FormLabel htmlFor="number">
+          <LabelSpan>Number</LabelSpan>
           <FormInputNumber />
-        </label>
+        </FormLabel>
         <div>
-          <button type="submit">Submit</button>
+          <BtnSubmit type="submit">Submit</BtnSubmit>
         </div>
       </Form>
     </Formik>

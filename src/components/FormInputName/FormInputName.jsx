@@ -1,8 +1,8 @@
-import { Field } from 'formik';
+import { Input } from 'components/FormInputName/FormInputName.styled';
 
 export const FormInputName = () => {
   return (
-    <Field
+    <Input
       type="text"
       name="name"
       pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"

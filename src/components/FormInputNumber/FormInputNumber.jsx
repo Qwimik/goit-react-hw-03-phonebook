@@ -1,8 +1,8 @@
-import { Field } from 'formik';
+import { Input } from 'components/FormInputName/FormInputName.styled';
 
 export const FormInputNumber = () => {
   return (
-    <Field
+    <Input
       type="tel"
       name="number"
       pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
