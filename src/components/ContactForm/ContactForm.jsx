@@ -1,5 +1,6 @@
 import { Formik, Form } from 'formik';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 import { FormInputName } from 'components/FormInputName/FormInputName';
 import { FormInputNumber } from 'components/FormInputNumber/FormInputNumber';
@@ -39,4 +40,10 @@ export const ContactForm = ({ addContact }) => {
       </Form>
     </Formik>
   );
+};
+
+initialValues.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  number: PropTypes.string,
 };
