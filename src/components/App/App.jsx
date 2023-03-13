@@ -7,6 +7,8 @@ import { ContactList } from 'components/ContactList/ContactList';
 
 import { Container, Title, SubTitle } from 'components/App/App.styled';
 
+const LS_KEY = 'contacts';
+
 export default class App extends Component {
   state = {
     contacts: [
@@ -17,6 +19,18 @@ export default class App extends Component {
     ],
     filter: '',
   };
+
+  componentDidMount() {
+    if (JSON.parse(localStorage.getItem(LS_KEY))) {
+      this.setState({ contacts: JSON.parse(localStorage.getItem(LS_KEY)) });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
+    }
+  }
 
   addContact = contact => {
     const names = this.state.contacts.map(item => item.name);
@@ -54,10 +68,14 @@ export default class App extends Component {
           filter={this.state.filter}
           filterContacts={this.filterContacts}
         />
-        <ContactList
-          contacts={filteredContacts}
-          deleteContact={this.deleteContact}
-        />
+        {this.state.contacts.length > 0 ? (
+          <ContactList
+            contacts={filteredContacts}
+            deleteContact={this.deleteContact}
+          />
+        ) : (
+          <p style={{ textAlign: 'center' }}>Don't have contacts...</p>
+        )}
       </Container>
     );
   }
