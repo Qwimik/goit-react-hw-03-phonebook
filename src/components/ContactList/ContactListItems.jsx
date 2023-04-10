@@ -3,6 +3,7 @@ import {
   ContactBtn,
 } from 'components/ContactList/ContactList.styled';
 import { FaWindowClose } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 export const ContactListItems = ({ contacts, deleteContact }) => {
   return contacts.map(item => {
@@ -17,4 +18,15 @@ export const ContactListItems = ({ contacts, deleteContact }) => {
       </ContactLi>
     );
   });
+};
+
+ContactListItems.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+  deleteContact: PropTypes.func.isRequired,
 };
